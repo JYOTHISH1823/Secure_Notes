@@ -62,5 +62,7 @@ A full-stack web application designed to create, manage, and securely store pers
    ```
    cd ../frontend
    npm start
-   ```<img width="1890" height="966" alt="Screenshot 2025-08-27 172507" src="https://github.com/user-attachments/assets/f6cb2398-fdde-49ba-8358-ec37c91af795" />
+
+<img width="1890" height="966" alt="Screenshot 2025-08-27 172507" src="https://github.com/user-attachments/assets/f8be7a87-e738-4eee-be72-63ae9abb3e44" />
+
 
