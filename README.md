@@ -62,5 +62,5 @@ A full-stack web application designed to create, manage, and securely store pers
    ```
    cd ../frontend
    npm start
-   ```
-This project does not include a license. You may use it for personal or educational purposes.
+   ```<img width="1890" height="966" alt="Screenshot 2025-08-27 172507" src="https://github.com/user-attachments/assets/f6cb2398-fdde-49ba-8358-ec37c91af795" />
+
