@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-const VAULT_JWT_TTL = "12h"; // how long the vault stays unlocked
+const VAULT_JWT_TTL = "12h";
 
 exports.setVaultPassword = async (req, res) => {
   try {
@@ -28,18 +28,12 @@ exports.verifyVaultPassword = async (req, res) => {
     if (!password) return res.status(400).json({ error: "Password is required" });
 
     const user = await User.findById(req.user.id).select("+vaultPasswordHash");
-    if (!user || !user.vaultPasswordHash) {
-      return res.status(400).json({ error: "Vault not initialized" });
-    }
+    if (!user || !user.vaultPasswordHash) return res.status(400).json({ error: "Vault not initialized" });
 
     const ok = await bcrypt.compare(password, user.vaultPasswordHash);
     if (!ok) return res.status(401).json({ error: "Invalid vault password" });
 
-    const vaultToken = jwt.sign(
-      { sub: req.user.id, scope: "vault" },
-      process.env.JWT_SECRET,
-      { expiresIn: VAULT_JWT_TTL }
-    );
+    const vaultToken = jwt.sign({ sub: req.user.id, scope: "vault" }, process.env.JWT_SECRET, { expiresIn: VAULT_JWT_TTL });
 
     return res.json({ vaultToken, expiresIn: VAULT_JWT_TTL });
   } catch (e) {

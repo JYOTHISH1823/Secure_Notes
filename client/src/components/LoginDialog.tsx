@@ -61,7 +61,6 @@ export function LoginDialog({ open, onClose, onLogin }: LoginDialogProps) {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
       // Save token from backend
-      localStorage.setItem("token", response.data.token); 
 
 
       onLogin(res.data.user);
